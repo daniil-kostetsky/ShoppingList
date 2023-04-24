@@ -17,7 +17,6 @@ class MainViewModel : ViewModel() {
 
     val shopList = getShopListUseCase.getShopList()
 
-
     fun deleteShopItem(shopItem: ShopItem) {
         deleteShopItemUseCase.deleteShopItem(shopItem)
     }
@@ -26,7 +25,6 @@ class MainViewModel : ViewModel() {
         val newItem = shopItem.copy(enabled = !shopItem.enabled)
         editShopItemUseCase.editShopItem(newItem)
     }
-
 
 
 }
