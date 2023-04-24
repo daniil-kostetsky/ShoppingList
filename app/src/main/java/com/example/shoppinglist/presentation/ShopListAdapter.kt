@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.shoppinglist.R
@@ -21,6 +22,8 @@ class ShopListAdapter : RecyclerView.Adapter<ShopListAdapter.ShopItemViewHolder>
 
 
     var count = 0
+    var onShopItemLongClickListener: ((ShopItem) -> Unit)? = null
+    var onShopItemClickListener: ((ShopItem) ->Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ShopItemViewHolder {
 
@@ -45,9 +48,14 @@ class ShopListAdapter : RecyclerView.Adapter<ShopListAdapter.ShopItemViewHolder>
         holder.tvCount.text = shopItem.count.toString()
 
         holder.itemView.setOnLongClickListener {
+            onShopItemLongClickListener?.invoke(shopItem)
             true
-            TODO()
         }
+
+        holder.itemView.setOnClickListener {
+            onShopItemClickListener?.invoke(shopItem)
+        }
+
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -73,4 +81,5 @@ class ShopListAdapter : RecyclerView.Adapter<ShopListAdapter.ShopItemViewHolder>
         const val VIEW_TYPE_DISABLED = 102
         const val MAX_POOL_SIZE = 10
     }
+
 }
