@@ -6,4 +6,6 @@
     <string name="save_button">Save</string>
     <string name="invalid_input_name">Invalid input name</string>
     <string name="invalid_input_count">Invalid input count</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
