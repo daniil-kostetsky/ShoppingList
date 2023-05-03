@@ -1,5 +1,6 @@
 package com.example.shoppinglist.presentation
 
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -28,10 +29,20 @@ class ShopItemFragment : Fragment() {
     private var screenMode: String = MODE_UNKNOWN
     private var shopItemId: Int = ShopItem.UNDEFINED_ID
 
+    private lateinit var onEditingFinishedListener: OnEditingFinishedListener
+
     override fun onCreate(savedInstanceState: Bundle?) {
-        Log.d("ShopItemFragment", "onCreate")
         super.onCreate(savedInstanceState)
         parseParams()
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is OnEditingFinishedListener) {
+            onEditingFinishedListener = context
+        } else {
+            throw RuntimeException("Activity need onEditingFinishedListener implement")
+        }
     }
 
     override fun onCreateView(
@@ -129,6 +140,9 @@ class ShopItemFragment : Fragment() {
             }
             tilCount.error = message
         }
+        shopItemViewModel.isCanBeClosedScreen.observe(viewLifecycleOwner) {
+            onEditingFinishedListener.onEditingFinished()
+        }
     }
 
     private fun initViews(view: View) {
@@ -158,6 +172,10 @@ class ShopItemFragment : Fragment() {
         }
     }
 
+
+    interface OnEditingFinishedListener {
+        fun onEditingFinished()
+    }
 
     companion object {
 
