@@ -1,4 +1,4 @@
-package com.example.shoppinglist.presentation
+package com.example.shoppinglist.presentation.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -6,13 +6,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.shoppinglist.data.ShopListRepositoryImpl
-import com.example.shoppinglist.domain.AddShopItemUseCase
-import com.example.shoppinglist.domain.EditShopItemUseCase
-import com.example.shoppinglist.domain.GetShopItemUseCase
+import com.example.shoppinglist.domain.usecases.AddShopItemUseCase
+import com.example.shoppinglist.domain.usecases.EditShopItemUseCase
+import com.example.shoppinglist.domain.usecases.GetShopItemUseCase
 import com.example.shoppinglist.domain.ShopItem
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
 class ShopItemViewModel(application: Application) : AndroidViewModel(application) {

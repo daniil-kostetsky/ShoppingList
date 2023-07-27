@@ -1,4 +1,4 @@
-package com.example.shoppinglist.presentation
+package com.example.shoppinglist.presentation.activities
 
 import android.os.Bundle
 import android.widget.Toast
@@ -9,6 +9,9 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shoppinglist.R
 import com.example.shoppinglist.databinding.ActivityMainBinding
+import com.example.shoppinglist.presentation.viewmodels.MainViewModel
+import com.example.shoppinglist.presentation.fragments.ShopItemFragment
+import com.example.shoppinglist.presentation.adapters.ShopListAdapter
 
 class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedListener {
 

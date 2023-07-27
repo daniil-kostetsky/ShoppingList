@@ -1,16 +1,13 @@
-package com.example.shoppinglist.presentation
+package com.example.shoppinglist.presentation.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.shoppinglist.data.ShopListRepositoryImpl
-import com.example.shoppinglist.domain.DeleteShopItemUseCase
-import com.example.shoppinglist.domain.EditShopItemUseCase
-import com.example.shoppinglist.domain.GetShopListUseCase
+import com.example.shoppinglist.domain.usecases.DeleteShopItemUseCase
+import com.example.shoppinglist.domain.usecases.EditShopItemUseCase
+import com.example.shoppinglist.domain.usecases.GetShopListUseCase
 import com.example.shoppinglist.domain.ShopItem
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
